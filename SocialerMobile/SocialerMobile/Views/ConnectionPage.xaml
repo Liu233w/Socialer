@@ -44,6 +44,12 @@
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    FontSize="10" />
                         </StackLayout>
+                        <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type local:ConnectionViewModel}}, Path=PersonTapped}"
+                                                      CommandParameter="{Binding .}">
+                                </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
