@@ -1,5 +1,6 @@
-﻿using SocialerMobile.Models;
+using SocialerMobile.Models;
 using System;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -7,49 +8,20 @@ using Xamarin.Forms;
 namespace SocialerMobile.ViewModels
 {
     [QueryProperty(nameof(ItemId), nameof(ItemId))]
-    public class ConnectionDetailViewModel : BaseViewModel
+    public class ConnectionDetailViewModel : BaseConnectionViewModel
     {
-        private string name;
-        private string note;
-        private int rating;
-        private int targetRating;
-        private string itemId;
+        private string _itemId;
+
+        public ObservableCollection<Event> Events { get; private set; }
 
         public string Id { get; set; }
 
-        public string Name
-        {
-            get => name;
-            set => SetProperty(ref name, value);
-        }
-
-        public string Note
-        {
-            get => note;
-            set => SetProperty(ref note, value);
-        }
-
-        public int Rating
-        {
-            get => rating;
-            set => SetProperty(ref rating, value);
-        }
-
-        public int TargetRating
-        {
-            get => targetRating;
-            set => SetProperty(ref targetRating, value);
-        }
-
         public string ItemId
         {
-            get
-            {
-                return itemId;
-            }
+            get { return _itemId; }
             set
             {
-                itemId = value;
+                _itemId = value;
                 LoadItemId(value);
             }
         }
@@ -64,6 +36,9 @@ namespace SocialerMobile.ViewModels
                 Note = item.Note;
                 Rating = item.Rating;
                 TargetRating = item.TargetRating;
+
+                var events = await SocialerDataStore.GetEventsAsync(itemId);
+                Events = new ObservableCollection<Event>(events);
             }
             catch (Exception)
             {

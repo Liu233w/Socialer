@@ -19,5 +19,11 @@ namespace SocialerMobile.Services
         Task<IEnumerable<Person>> GetPersonsAsync();
 
         Task AddEventAsync(string personId, Event @event);
+
+        Task<Event> GetEventAsync(string eventId);
+
+        Task<IEnumerable<Event>> GetEventsAsync(string personId);
+
+        Task RemoveEventAsync(string eventId);
     }
 }
