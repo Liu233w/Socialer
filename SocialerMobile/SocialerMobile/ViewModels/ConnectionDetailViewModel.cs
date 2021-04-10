@@ -1,7 +1,9 @@
 using SocialerMobile.Models;
+using SocialerMobile.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -12,7 +14,16 @@ namespace SocialerMobile.ViewModels
     {
         private string _itemId;
 
-        public ObservableCollection<Event> Events { get; private set; }
+        public ConnectionDetailViewModel()
+        {
+            Events = new ObservableCollection<Event>();
+
+            AddEventCommand = new Command(OnAddEvent);
+            DeletePersonCommand = new Command(OnPersonDelete);
+            EventTapped = new Command<Event>(OnEventTap);
+        }
+
+        public ObservableCollection<Event> Events { get; }
 
         public string Id { get; set; }
 
@@ -38,12 +49,43 @@ namespace SocialerMobile.ViewModels
                 TargetRating = item.TargetRating;
 
                 var events = await SocialerDataStore.GetEventsAsync(itemId);
-                Events = new ObservableCollection<Event>(events);
+                Events.Clear();
+                foreach (var @event in events)
+                {
+                    Events.Add(@event);
+                }
             }
             catch (Exception)
             {
                 Debug.WriteLine("Failed to Load Item");
             }
+        }
+
+        private async void OnAddEvent(object obj)
+        {
+            await Shell.Current.GoToAsync($"{nameof(NewEventPage)}?{nameof(NewEventViewModel.PersonId)}={Id}");
+        }
+
+        private async void OnEventTap(Event @event)
+        {
+            if (@event == null)
+            {
+                return;
+            }
+
+            await Shell.Current.GoToAsync($"{nameof(EventDetailPage)}?{nameof(EventDetailViewModel.Id)}={@event.Id}");
+        }
+
+        private async void OnPersonDelete(object obj)
+        {
+            var confirmed =
+                await Shell.Current.DisplayAlert("Delete?", "Do you want to delete this connection?", "Yes", "No");
+            if (confirmed)
+            {
+                await SocialerDataStore.RemovePersonAsync(Id);
+            }
+
+            await Shell.Current.GoToAsync("..");
         }
 
         public Command AddEventCommand { get; }
