@@ -39,7 +39,7 @@ namespace SocialerMobile.Services
 
             var entity = new Event
             {
-                Id = new Guid().ToString(),
+                Id = Guid.NewGuid().ToString(),
                 PersonId = person.Id,
                 Name = @event.Name,
                 Note = @event.Note,
@@ -77,7 +77,7 @@ namespace SocialerMobile.Services
         {
             var entity = new Person
             {
-                Id = new Guid().ToString(),
+                Id = Guid.NewGuid().ToString(),
                 Name = person.Name,
                 Note = person.Note,
                 Rating = person.Rating,
