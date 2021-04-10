@@ -5,11 +5,11 @@
              Title="{Binding Title}">
 
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="Text:" FontSize="Medium" />
-        <Label Text="{Binding Text}" FontSize="Small"/>
-        <Label Text="Description:" FontSize="Medium" />
-        <Label Text="{Binding Description}" FontSize="Small"/>
-        <DatePicker MinimumDate="01/01/2018" MaximumDate="12/31/2030" Date="04/10/2021" />
+        <Label Text="Title:" FontSize="Medium" />
+        <Label Text="{Binding Name}" FontSize="Small"/>
+        <Label Text="Notes:" FontSize="Medium" />
+        <Label Text="{Binding Note}" FontSize="Small"/>
+        
     </StackLayout>
     
 </ContentPage>
