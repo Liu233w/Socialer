@@ -10,10 +10,7 @@
     <StackLayout Spacing="20" Padding="15">
         <StackLayout Orientation="Horizontal">
             <Label Text="{Binding Name}" FontSize="Large"/>
-            <Button Text="Delete"
-                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ConnectionViewModel}}, Path=DeleteItemCommand}"
-                CommandParameter="{Binding .}"
-                HorizontalOptions="End" />
+            <Button Text="Delete" Command="{Binding DeletePersonCommand}" HorizontalOptions="End"></Button>
         </StackLayout>
         <StackLayout Orientation="Horizontal">
             <Label Text="Rating:" FontSize="Medium" />

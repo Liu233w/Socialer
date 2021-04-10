@@ -1,20 +1,19 @@
-﻿using System;
+﻿using SocialerMobile.Models;
+using SocialerMobile.ViewModels;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace SocialerMobile.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewEventPage : ContentPage
     {
         public NewEventPage()
         {
             InitializeComponent();
+            BindingContext = new NewEventViewModel();
         }
     }
 }
