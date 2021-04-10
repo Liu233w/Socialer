@@ -23,10 +23,11 @@
         <Label Text="Note:" FontSize="Medium" />
         <Label Text="{Binding Note}" FontSize="Small"/>
         <StackLayout Orientation="Horizontal">
-            <Label Text="Event" FontSize="Medium" />
+            <Label Text="Event:" FontSize="Medium" />
+            <Label Text="{Binding TargetRating}" FontSize="Medium"/>
             <Button Text="Add" Command="{Binding AddEventCommand}" HorizontalOptions="End"></Button>
         </StackLayout>
+        <Label Text="Try:" FontSize="Medium"/>
     </StackLayout>
-    
     
 </ContentPage>
