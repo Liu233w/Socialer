@@ -26,6 +26,12 @@
                     <StackLayout Orientation="Horizontal"
                                  Padding="10"
                                  x:DataType="model:Person">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type local:ConnectionViewModel}}, Path=PersonTapped}"
+                                                      CommandParameter="{Binding .}">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
                         <Label Text="{Binding Name}"
                                HorizontalOptions="StartAndExpand"
                                    LineBreakMode="NoWrap"
@@ -37,17 +43,7 @@
                                    LineBreakMode="NoWrap"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    FontSize="10" />
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}"
-                                                      CommandParameter="{Binding .}">
-                                </TapGestureRecognizer>
-                            </StackLayout.GestureRecognizers>
                         </StackLayout>
-                        <Button Text="Delete"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=DeleteItemCommand}"
-                                CommandParameter="{Binding .}"
-                                HorizontalOptions="End" />
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
