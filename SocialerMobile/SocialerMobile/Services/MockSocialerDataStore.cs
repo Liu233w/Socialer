@@ -8,6 +8,26 @@ namespace SocialerMobile.Services
 {
     class MockSocialerDataStore : ISocialerDataStore
     {
+        public MockSocialerDataStore()
+        {
+#if DEBUG
+            AddPersonAsync(new Person
+            {
+                Name = "Tom",
+                Note = "Nooo",
+                Rating = 3,
+                TargetRating = 4,
+            }).Wait();
+            AddPersonAsync(new Person
+            {
+                Name = "Jerry",
+                Note = "yyyyy",
+                Rating = 4,
+                TargetRating = 3,
+            }).Wait();
+#endif
+        }
+
         private List<Person> people = new List<Person>();
 
         public async Task AddEventAsync(string personId, Event @event)
