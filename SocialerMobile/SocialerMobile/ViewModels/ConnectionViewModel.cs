@@ -1,4 +1,5 @@
 using SocialerMobile.Models;
+using SocialerMobile.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -14,6 +15,9 @@ namespace SocialerMobile.ViewModels
             Title = "Connection Detail";
 
             LoadPeopleCommand = new Command(async () => await ExecuteLoadPeopleCommand());
+
+            AddPersonCommand = new Command(OnAddPerson);
+            PersonTapped = new Command<Person>(OnPersonSelected);
         }
 
         public ObservableCollection<Person> People { get; } = new ObservableCollection<Person>();
@@ -46,7 +50,22 @@ namespace SocialerMobile.ViewModels
             }
         }
 
+        private async void OnAddPerson(object obj)
+        {
+            await Shell.Current.GoToAsync(nameof(NewConnectionPage));
+        }
+
+        async void OnPersonSelected(Person item)
+        {
+            if (item == null)
+                return;
+
+            // This will push the ItemDetailPage onto the navigation stack
+            await Shell.Current.GoToAsync($"{nameof(ConnectionDetailPage)}?{nameof(ConnectionDetailViewModel.ItemId)}={item.Id}");
+        }
+
         public Command AddPersonCommand { get; }
         public Command LoadPeopleCommand { get; }
+        public Command<Person> PersonTapped { get; }
     }
 }

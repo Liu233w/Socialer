@@ -1,8 +1,10 @@
-﻿using System;
+using System;
 using System.Diagnostics;
+using Xamarin.Forms;
 
 namespace SocialerMobile.ViewModels
 {
+    [QueryProperty(nameof(EventId), nameof(EventId))]
     public class EventDetailViewModel : BaseEventViewModel
     {
         private string _eventId;
