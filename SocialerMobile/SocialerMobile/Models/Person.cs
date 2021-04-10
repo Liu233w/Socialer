@@ -15,7 +15,5 @@ namespace SocialerMobile.Models
         public int Rating { get; set; }
 
         public int TargetRating { get; set; }
-
-        public ICollection<Event> Events { get; set; }
     }
 }

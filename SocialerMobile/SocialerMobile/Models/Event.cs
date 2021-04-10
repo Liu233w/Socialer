@@ -7,6 +7,8 @@ namespace SocialerMobile.Models
     public class Event
     {
         public string Id { get; set; }
+        
+        public string PersonId { get; set; }
 
         public DateTime Time { get; set; }
 

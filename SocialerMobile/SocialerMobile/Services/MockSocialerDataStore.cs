@@ -1,6 +1,7 @@
 using SocialerMobile.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,7 +29,9 @@ namespace SocialerMobile.Services
 #endif
         }
 
-        private List<Person> people = new List<Person>();
+        private List<Person> _people = new List<Person>();
+
+        private List<Event> _events = new List<Event>();
 
         public async Task AddEventAsync(string personId, Event @event)
         {
@@ -37,6 +40,7 @@ namespace SocialerMobile.Services
             var entity = new Event
             {
                 Id = new Guid().ToString(),
+                PersonId = person.Id,
                 Name = @event.Name,
                 Note = @event.Note,
                 Time = @event.Time,
@@ -44,7 +48,29 @@ namespace SocialerMobile.Services
             };
 
             person.Rating += entity.RatingChange;
-            person.Events.Add(entity);
+
+            _events.Add(entity);
+        }
+
+        public async Task<Event> GetEventAsync(string eventId)
+        {
+            var entity = _events.Find(e => e.Id == eventId);
+            if (entity == null)
+            {
+                throw new KeyNotFoundException("Event with this id is not found");
+            }
+
+            return entity;
+        }
+
+        public async Task<IEnumerable<Event>> GetEventsAsync(string personId)
+        {
+            return _events.Where(e => e.PersonId == personId);
+        }
+
+        public async Task RemoveEventAsync(string eventId)
+        {
+            _events.RemoveAll(e => e.Id == eventId);
         }
 
         public Task<string> AddPersonAsync(Person person)
@@ -56,17 +82,16 @@ namespace SocialerMobile.Services
                 Note = person.Note,
                 Rating = person.Rating,
                 TargetRating = person.TargetRating,
-                Events = new List<Event>(),
             };
 
-            people.Add(entity);
+            _people.Add(entity);
 
             return Task.FromResult(entity.Id);
         }
 
         public Task<Person> GetPersonAsync(string id)
         {
-            var person = people.Find(p => p.Id == id);
+            var person = _people.Find(p => p.Id == id);
             if (person == null)
             {
                 throw new KeyNotFoundException("Person with this id does not exist");
@@ -77,12 +102,13 @@ namespace SocialerMobile.Services
 
         public async Task<IEnumerable<Person>> GetPersonsAsync()
         {
-            return people;
+            return _people;
         }
 
         public Task RemovePersonAsync(string id)
         {
-            people.RemoveAll(p => p.Id == id);
+            _people.RemoveAll(p => p.Id == id);
+            _events.RemoveAll(e => e.PersonId == id);
             return Task.CompletedTask;
         }
 

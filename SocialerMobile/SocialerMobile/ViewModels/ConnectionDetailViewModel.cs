@@ -11,17 +11,14 @@ namespace SocialerMobile.ViewModels
     public class ConnectionDetailViewModel : BaseConnectionViewModel
     {
         private string _itemId;
-        
+
         public ObservableCollection<Event> Events { get; private set; }
 
         public string Id { get; set; }
 
         public string ItemId
         {
-            get
-            {
-                return _itemId;
-            }
+            get { return _itemId; }
             set
             {
                 _itemId = value;
@@ -39,8 +36,9 @@ namespace SocialerMobile.ViewModels
                 Note = item.Note;
                 Rating = item.Rating;
                 TargetRating = item.TargetRating;
-                
-                Events = new ObservableCollection<Event>(item.Events);
+
+                var events = await SocialerDataStore.GetEventsAsync(itemId);
+                Events = new ObservableCollection<Event>(events);
             }
             catch (Exception)
             {
