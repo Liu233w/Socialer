@@ -1,4 +1,5 @@
 ﻿using SocialerMobile.Models;
+using System.Diagnostics;
 using Xamarin.Forms;
 
 namespace SocialerMobile.ViewModels
@@ -7,6 +8,7 @@ namespace SocialerMobile.ViewModels
     {
         public NewConnectionViewModel()
         {
+            Debug.WriteLine("socialer - entering new connection view model");
             SaveCommand = new Command(OnSave, ValidateSave);
             CancelCommand = new Command(OnCancel);
             this.PropertyChanged +=

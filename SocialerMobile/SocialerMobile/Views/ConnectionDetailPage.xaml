@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SocialerMobile.Views.ConnectionDetailPage"
              xmlns:local="clr-namespace:SocialerMobile.ViewModels"
-             xmlns:model="clr-namespace:SocialerMobile.Models"
+             xmlns:model="clr-namespace:SocialerMobile.Models" 
+             x:DataType="local:ConnectionDetailViewModel"
              Title="Connection Detail">
 
     <StackLayout Spacing="20" Padding="15">
@@ -25,7 +26,8 @@
         <Label Text="Note:" FontSize="Medium" />
         <Label Text="{Binding Note}" FontSize="Small"/>
         <StackLayout Orientation="Horizontal">
-            <Label Text="Event:" FontSize="Medium" />
+            <Label Text="Event" FontSize="Medium" />
+            <Button Text="Add" Command="{Binding AddEventCommand}" HorizontalOptions="End"></Button>
         </StackLayout>
     </StackLayout>
     

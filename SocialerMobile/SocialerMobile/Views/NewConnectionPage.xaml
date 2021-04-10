@@ -2,17 +2,18 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SocialerMobile.Views.NewConnectionPage"
+             xmlns:local="clr-namespace:SocialerMobile.ViewModels"
              Shell.PresentationMode="ModalAnimated"
              Title="New Connection"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             x:DataType="local:NewConnectionViewModel"
              ios:Page.UseSafeArea="true">
     <ContentPage.Content>
         <StackLayout Spacing="3" Padding="15">
-            <Entry Placeholder="Name" ClearButtonVisibility="WhileEditing" IsSpellCheckEnabled="false"/>
-            <Entry Placeholder="Rating" Keyboard="Numeric" IsSpellCheckEnabled="false"/>
-            <Entry Placeholder="Target Rating" Keyboard="Numeric" IsSpellCheckEnabled="false"/>
-            <Entry Placeholder="Note" ClearButtonVisibility="WhileEditing"/>
-            <Label Text="Event"/>
+            <Entry Text="{Binding Name, Mode=TwoWay}" Placeholder="Name" ClearButtonVisibility="WhileEditing" IsSpellCheckEnabled="false"/>
+            <Entry Text="{Binding Rating, Mode=TwoWay}" Placeholder="Rating" Keyboard="Numeric" IsSpellCheckEnabled="false"/>
+            <Entry Text="{Binding TargetRating, Mode=TwoWay}" Placeholder="Target Rating" Keyboard="Numeric" IsSpellCheckEnabled="false"/>
+            <Entry Text="{Binding Note, Mode=TwoWay}" Placeholder="Note" ClearButtonVisibility="WhileEditing"/>
             <StackLayout Orientation="Horizontal">
                 <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
