@@ -7,13 +7,13 @@ namespace SocialerMobile.Views
 {
     public partial class ConnectionPage : ContentPage
     {
-        ItemsViewModel _viewModel;
+        ConnectionViewModel _viewModel;
 
         public ConnectionPage()
         {
             InitializeComponent();
 
-            BindingContext = _viewModel = new ItemsViewModel();
+            BindingContext = _viewModel = new ConnectionViewModel();
         }
 
         protected override void OnAppearing()
