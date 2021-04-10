@@ -11,7 +11,7 @@ namespace SocialerMobile.ViewModels
     {
         public ConnectionViewModel()
         {
-            Title = "Connections";
+            Title = "Connection Detail";
 
             LoadPeopleCommand = new Command(async () => await ExecuteLoadPeopleCommand());
         }
