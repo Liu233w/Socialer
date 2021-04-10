@@ -37,7 +37,7 @@ namespace SocialerMobile.Services
             var entity = new Event
             {
                 Id = new Guid().ToString(),
-                Title = @event.Title,
+                Name = @event.Name,
                 Note = @event.Note,
                 Time = @event.Time,
                 RatingChange = @event.RatingChange,

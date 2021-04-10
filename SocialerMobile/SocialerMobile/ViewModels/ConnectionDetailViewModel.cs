@@ -1,4 +1,4 @@
-﻿using SocialerMobile.Models;
+using SocialerMobile.Models;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -7,49 +7,21 @@ using Xamarin.Forms;
 namespace SocialerMobile.ViewModels
 {
     [QueryProperty(nameof(ItemId), nameof(ItemId))]
-    public class ConnectionDetailViewModel : BaseViewModel
+    public class ConnectionDetailViewModel : BaseConnectionViewModel
     {
-        private string name;
-        private string note;
-        private int rating;
-        private int targetRating;
-        private string itemId;
+        private string _itemId;
 
         public string Id { get; set; }
-
-        public string Name
-        {
-            get => name;
-            set => SetProperty(ref name, value);
-        }
-
-        public string Note
-        {
-            get => note;
-            set => SetProperty(ref note, value);
-        }
-
-        public int Rating
-        {
-            get => rating;
-            set => SetProperty(ref rating, value);
-        }
-
-        public int TargetRating
-        {
-            get => targetRating;
-            set => SetProperty(ref targetRating, value);
-        }
 
         public string ItemId
         {
             get
             {
-                return itemId;
+                return _itemId;
             }
             set
             {
-                itemId = value;
+                _itemId = value;
                 LoadItemId(value);
             }
         }
