@@ -1,4 +1,4 @@
-﻿using SocialerMobile.ViewModels;
+using SocialerMobile.ViewModels;
 using System.ComponentModel;
 using Xamarin.Forms;
 
@@ -9,7 +9,7 @@ namespace SocialerMobile.Views
         public ConnectionDetailPage()
         {
             InitializeComponent();
-            BindingContext = new ItemDetailViewModel();
+            BindingContext = new ConnectionDetailViewModel();
         }
     }
 }
