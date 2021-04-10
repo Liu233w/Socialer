@@ -5,11 +5,21 @@
              Title="Connection Detail">
 
     <StackLayout Spacing="20" Padding="15">
-        <Entry Placeholder="Name" ClearButtonVisibility="WhileEditing" IsSpellCheckEnabled="false"/>
-        <Entry Placeholder="Rating" Keyboard="Numeric" IsSpellCheckEnabled="false"/>
-        <Entry Placeholder="Target Rating" Keyboard="Numeric" IsSpellCheckEnabled="false"/>
-        <Entry Placeholder="Note" ClearButtonVisibility="WhileEditing"/>
-        <Label Text="Event"/>
+        <Label Text="{Binding Name}" FontSize="Large"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Rating:" FontSize="Medium" />
+            <Label Text="{Binding Rating}" FontSize="Medium"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Target Rating:" FontSize="Medium" />
+            <Label Text="{Binding TargetRating}" FontSize="Medium"/>
+        </StackLayout>
+        <Label Text="Note:" FontSize="Medium" />
+        <Label Text="{Binding Note}" FontSize="Small"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Event:" FontSize="Medium" />
+            <Label Text="{Binding TargetRating}" FontSize="Medium"/>
+        </StackLayout>
     </StackLayout>
     
 </ContentPage>

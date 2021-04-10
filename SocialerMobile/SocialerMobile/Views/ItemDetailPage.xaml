@@ -9,6 +9,7 @@
         <Label Text="{Binding Text}" FontSize="Small"/>
         <Label Text="Description:" FontSize="Medium" />
         <Label Text="{Binding Description}" FontSize="Small"/>
+        <DatePicker MinimumDate="01/01/2018" MaximumDate="12/31/2030" Date="04/10/2021" />
     </StackLayout>
     
 </ContentPage>
