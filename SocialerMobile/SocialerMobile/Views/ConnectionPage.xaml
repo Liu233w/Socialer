@@ -32,22 +32,17 @@
                                    Style="{DynamicResource ListItemTextStyle}"
                                    FontSize="16" />
                         <StackLayout HorizontalOptions="End">
-                            
                             <Label Text="{Binding Note}"
                                    LineBreakMode="NoWrap"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    FontSize="13" />
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}"
-                                                      CommandParameter="{Binding .}">
-                                </TapGestureRecognizer>
-                            </StackLayout.GestureRecognizers>
                         </StackLayout>
-                        <Button Text="Delete"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=DeleteItemCommand}"
-                                CommandParameter="{Binding .}"
-                                HorizontalOptions="End" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type local:ConnectionViewModel}}, Path=PersonTapped}"
+                                                      CommandParameter="{Binding .}">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

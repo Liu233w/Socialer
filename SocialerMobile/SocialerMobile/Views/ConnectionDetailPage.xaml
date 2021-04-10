@@ -2,10 +2,18 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SocialerMobile.Views.ConnectionDetailPage"
+             xmlns:local="clr-namespace:SocialerMobile.ViewModels"
+             xmlns:model="clr-namespace:SocialerMobile.Models"
              Title="Connection Detail">
 
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="{Binding Name}" FontSize="Large"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{Binding Name}" FontSize="Large"/>
+            <Button Text="Delete"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ConnectionViewModel}}, Path=DeleteItemCommand}"
+                CommandParameter="{Binding .}"
+                HorizontalOptions="End" />
+        </StackLayout>
         <StackLayout Orientation="Horizontal">
             <Label Text="Rating:" FontSize="Medium" />
             <Label Text="{Binding Rating}" FontSize="Medium"/>
@@ -18,8 +26,8 @@
         <Label Text="{Binding Note}" FontSize="Small"/>
         <StackLayout Orientation="Horizontal">
             <Label Text="Event:" FontSize="Medium" />
-            <Label Text="{Binding TargetRating}" FontSize="Medium"/>
         </StackLayout>
     </StackLayout>
+    
     
 </ContentPage>
