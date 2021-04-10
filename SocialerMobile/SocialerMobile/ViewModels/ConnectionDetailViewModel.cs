@@ -43,7 +43,7 @@ namespace SocialerMobile.ViewModels
             {
                 var item = await SocialerDataStore.GetPersonAsync(itemId);
                 Id = item.Id;
-                Name = item.Id;
+                Name = item.Name;
                 Note = item.Note;
                 Rating = item.Rating;
                 TargetRating = item.TargetRating;
