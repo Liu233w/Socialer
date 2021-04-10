@@ -2,13 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SocialerMobile.Views.ConnectionDetailPage"
-             Title="{Binding Title}">
+             Title="Connection Detail">
 
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="Text:" FontSize="Medium" />
-        <Label Text="{Binding Name}" FontSize="Small"/>
-        <Label Text="Description:" FontSize="Medium" />
-        <Label Text="{Binding Note}" FontSize="Small"/>
+        <Entry Placeholder="Name" ClearButtonVisibility="WhileEditing" IsSpellCheckEnabled="false"/>
+        <Entry Placeholder="Rating" Keyboard="Numeric" IsSpellCheckEnabled="false"/>
+        <Entry Placeholder="Target Rating" Keyboard="Numeric" IsSpellCheckEnabled="false"/>
+        <Entry Placeholder="Note" ClearButtonVisibility="WhileEditing"/>
+        <Label Text="Event"/>
     </StackLayout>
     
 </ContentPage>
