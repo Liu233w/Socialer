@@ -8,7 +8,10 @@
              Title="{Binding Name}">
 
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="{Binding Name}" FontSize="Large"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{Binding Name}" FontSize="Large"/>
+            <Button Text="Delete" Command="{Binding DeletePersonCommand}" HorizontalOptions="End"></Button>
+        </StackLayout>
         <StackLayout Orientation="Horizontal">
             <Label Text="Rating:" FontSize="Medium" />
             <Label Text="{Binding Rating}" FontSize="Medium"/>
