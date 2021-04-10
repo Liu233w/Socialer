@@ -34,7 +34,6 @@
         <ShellContent Title="Browse" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
         <ShellContent Title="My" Icon="icon_feed.png" Route="MyPage" ContentTemplate="{DataTemplate local:MyPage}" />
         <ShellContent Title="Connection" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:ConnectionPage}" />
-         <ShellContent Title="Event" Icon="icon_about.png" Route="EventPage" ContentTemplate="{DataTemplate local:EventPage}" />
     </TabBar>
 
     <!--
