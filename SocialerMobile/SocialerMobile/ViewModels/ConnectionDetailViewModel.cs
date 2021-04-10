@@ -45,5 +45,9 @@ namespace SocialerMobile.ViewModels
                 Debug.WriteLine("Failed to Load Item");
             }
         }
+
+        public Command AddEventCommand { get; }
+        public Command DeletePersonCommand { get; }
+        public Command<Event> EventTapped { get; }
     }
 }

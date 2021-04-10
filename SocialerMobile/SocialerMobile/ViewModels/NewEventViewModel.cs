@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using SocialerMobile.Models;
 using Xamarin.Forms;
 
 namespace SocialerMobile.ViewModels
 {
+    [QueryProperty(nameof(PersonId), nameof(PersonId))]
     public class NewEventViewModel : BaseEventViewModel
     {
         public string PersonId { get; set; }
