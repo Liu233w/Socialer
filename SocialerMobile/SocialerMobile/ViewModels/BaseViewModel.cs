@@ -1,4 +1,4 @@
-﻿using SocialerMobile.Models;
+using SocialerMobile.Models;
 using SocialerMobile.Services;
 using System;
 using System.Collections.Generic;
@@ -11,6 +11,8 @@ namespace SocialerMobile.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+
+        public ISocialerDataStore SocialerDataStore => DependencyService.Get<ISocialerDataStore>();
 
         bool isBusy = false;
         public bool IsBusy

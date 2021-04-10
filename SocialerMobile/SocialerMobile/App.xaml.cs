@@ -1,4 +1,4 @@
-﻿using SocialerMobile.Services;
+using SocialerMobile.Services;
 using SocialerMobile.Views;
 using System;
 using Xamarin.Forms;
@@ -14,6 +14,8 @@ namespace SocialerMobile
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
+            DependencyService.Register<MockSocialerDataStore>();
+
             MainPage = new AppShell();
         }
 
