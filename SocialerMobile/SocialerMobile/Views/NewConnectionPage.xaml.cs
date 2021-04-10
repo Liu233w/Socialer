@@ -10,12 +10,10 @@ namespace SocialerMobile.Views
 {
     public partial class NewConnectionPage : ContentPage
     {
-        public Item Item { get; set; }
-
         public NewConnectionPage()
         {
             InitializeComponent();
-            BindingContext = new NewItemViewModel();
+            BindingContext = new NewConnectionViewModel();
         }
     }
 }
