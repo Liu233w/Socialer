@@ -29,7 +29,7 @@
         </StackLayout>
         <ScrollView Grid.Row="1">
             <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
-                <Label Text="Connect now" FontSize="Header"/>
+                <Label Text="Connect now" FontSize="20"/>
                 <Label Text="It's time to connect your family!" FontSize="18" Padding="0,0,0,0"/>
                 <Label FontSize="14" Padding="0,24,0,0">
                     <Label.FormattedText>
